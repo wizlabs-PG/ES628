@@ -1,0 +1,125 @@
+R4.7 : 2025. 05. 16 ==================================================
+1. modify fpga edp hexa.
+
+R4.6 : 2025. 04. 30 ==================================================
+1. add eDP Power Sequence.
+2. add aux protocol.
+
+R4.5 : 2025. 04. 07 ==================================================
+1. modify Changing color in MODE_HEXA.
+
+R4.4 : 2025. 04. 01 ==================================================
+1. modfiy SID_STD_EDP_CHARA_WR_REQ Protocol.
+
+R4.3 : 2025. 03. 25 ==================================================
+1. modify incorrect operation on gradation pattern.(add upe_bit_flag)
+
+R4.2 : ADD DP to eDP FPGA. 
+
+R4.1 : Change fpga 090 file size 45Mbyte.
+
+R3.5 : Issue occured after R3.3. protocol needed to fixed.
+
+R3.4 : 2023. 03. 21 ==================================================
+1. VBL enable timeout added in Power sequence(protocol called when 'LCD on'
+2. add ELVDD Alarm.
+	- rcb.h, global.h : add variable and function. (and plus one to MENU_MAX_NUM in rcb.h)
+	- main.c : add get_elvdd_alarm_flag_global();
+	- global.c : add get_elvdd_alarm_flag_global() prototype.
+				 add set_elvdd_alarm_flag_global() prototype.
+				 add rcb_vbl_check_warning_proc() prototype.
+	- rcb.c : add rcb_elvdd_alarm_set_info() prototype.
+			  add rcb_elvdd_alarm_set_info_proc() prototype.
+			  add g_menu[] about "17.ELVDD ALARM".
+			  add VBL_CHECK_WARN and VBL_CHECK_INFO in rcb_proc().
+			  add case 16 in rcb_menu_proc().
+			  modify operateing onoff in rcb_ready_proc().
+			  
+R3.3 : 2023. 03. 21 ==================================================
+1. VBL enable timeout added in Power sequence(protocol called when 'LCD on'
+2. Gray change function modified following sptech protocol because of 12bit color 
+
+R3.1 : 2022. 12. 08 ==================================================
+1. Fixed all about 12bit( make it to available with both 10bit and 12bit
+	pattern_contrl.c, msg_comu.c, pattern.c, rcb.c)
+2. Make index in rcb operation which can memory the last pattern of group although it's not running	(rcb.c)
+
+R3.0 : 2022. 08. 25 ==================================================
+1. I2C power sequence 2 issue solved
+(global.h	: req_std_pwr_seq_test_t, std_pwr_seq_timing_buf_t, std_pwr_seq_timing, std_pwr_seq_i2c
+ msg_comu.c	: SID_STD_PWR_SEQ_SET_REQ
+ main.c		: std_pseq_acdet_thread
+ pwr_contrl.c	: std_pseq_acdet_thread, std_power_seq_i2c_set)
+
+R2.9 : 2022. 07. 27 ==================================================
+1. H_active parameter changed(only for DP 5K)
+
+R2.8 : 2022. 07. 07 ==================================================
+1. CTL fixed (Issue solved)
+
+R2.7 : 2022. 06. 15 ==================================================
+1. add I2C power sequence 2
+
+R2.6 : 2022. 04. 29 ==================================================
+1. add Power Sequence I2C 2 
+
+R2.5 : 2022. 04. 07 ==================================================
+1. 12bit(11bit) RGB
+
+R2.4 : 2022. 04. 06 ==================================================
+1. add Vx1 when the resolutiuon is 5k(5120x1440)
+2. made ES628 to send power sequence(for using EP620QP)
+3. add function: CTL write
+
+R2.3 : 2022. 01. 07 ==================================================
+1. Pattern control/indirect pattern fix (Enable to use indirect pattern in 8K)-2
+
+R2.2 : 2021. 12. 29 ==================================================
+1. Pattern control/indirect pattern fix (Enable to use indirect pattern in 8K)
+
+R2.1 : 2021. 09. 06 ==================================================
+1. FPGA reg address bug fix - SSCG
+
+R2.0 : 2021. 07. 15 ==================================================
+1. h active, v active change func
+
+R1.9 : 2021. 06. 03 ==================================================
+1. vrr step change 10 to 100.
+
+R1.8 : 2021. 04. 22 ==================================================
+1. fpga version update.
+
+R1.7 : 2021. 04. 07 ==================================================
+1. model_data.h : struct enum_mode_t : add MODE_32LANE_16x2.
+2. model_data.c : get_divider() : switch(model_data.mode & 0x7) -> switch(model_data.mode & 0xf).
+3. model_data.c : set_dvi() : switch(model_data.mode & 0x7) -> switch(model_data.mode & 0xf).
+4. rcb.c : display_model_info() : g_out_name[model_data.mode&0x7] -> g_out_name[model_data.mode&0xf].
+5. rcb.c : *g_out_name[] : add {"16LN2"}.
+
+R1.6 : 2021. 04. 01 ==================================================
+1. add PCONTROLLER function for advance power control delay issue. (PCONTROLLER don't use anymore)
+	main.c : void *External_power_link_check_thread(void *arg)
+	add pwr_tcpclient.h, pwr_tcpclient.c.
+2. Change to compatible Image file's little and big Extension name.
+3. add cursor_color function.
+4. add storage check in rcb menu.
+5. group_data.h : struct group_data : add unsigned int frequency, unsigned short vbporch(compatible ~v1.5 group). 
+
+R1.5 : 2021. 03. 25 ==================================================
+1. fpga_spi.h : Separate DP to vby1 fpga file names for each lane.
+
+R1.4 : 2021. 03. 03 ==================================================
+1. PCONTROLLER version up.
+
+R1.3 : 2021. 02. 19 ==================================================
+1. rcb.c : set_var_data() : bug fix : add initialization var_data.h_fpo and var_data.v_fpo.
+2. msg_comu.c : msg_analyze() : case SID_STD_SSCG_SET_REQ : change to passing received data from s/w to fpga.
+
+R1.2 : 2021. 02. 09 ==================================================
+1. 
+
+R1.1 : 2021. 01. 28 ==================================================
+1. R1.1
+
+R0.1 : 2020. 08. 17 ==================================================
+1. from ES620 R5.4
