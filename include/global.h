@@ -100,7 +100,7 @@
 // System Define
 //#define FW_VERSION				38		// 3.8 2023.06.
 //#define FW_VERSION				39		// 3.9 2023.08.07 test
-#define FW_VERSION				70
+#define FW_VERSION				71
 #define PG_NAME					"ES628"
 
 // Directory Define
